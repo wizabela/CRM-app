@@ -1,5 +1,8 @@
 const express = require('express');
 const hbs = require('express-handlebars');
+const {clientRouter} = require("./routers/client");
+const {homeRouter} = require("./routers/home");
+const {db} = require('./utils/db');
 
 const app = express();
 
@@ -14,8 +17,14 @@ app.engine('.hbs', hbs({
 }));
 app.set('view engine', '.hbs');
 
-app.get('/', (req, res) => {
-    res.render('test');
+app.use('/', homeRouter);
+app.use('/client', clientRouter);
+app.get('/test', (req, res) => {
+   db.create({
+       name: 'Test123',
+       email: 'a@b.c',
+   });
+   res.send('Ok!');
 });
 
 
