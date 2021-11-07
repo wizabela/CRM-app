@@ -20,6 +20,28 @@ class Db {
         writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
     }
 
+    getAll() {
+        return this._data;
+    }
+
+    update(id, newObj) {
+        this._data = this._data.map(oneObj => {
+            if (oneObj.id === id) {
+                return {
+                    ...oneObj,
+                    ...newObj,
+                };
+            } else {
+                return oneObj;
+            }
+        });
+        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+    }
+
+    delete(id) {
+this._data = this._data.filter(oneObj => oneObj.id !== id); //nowa tablica będzie miała elementy true
+    }
+
 }
 
 const db = new Db('client.json');
