@@ -19,14 +19,6 @@ app.set('view engine', '.hbs');
 
 app.use('/', homeRouter);
 app.use('/client', clientRouter);
-app.get('/test', (req, res) => {
-    db.update('a6a9111d-7226-4130-8faf-d9983fa0ffdd', {
-        name: 'Tester',
-        email: 'a@b.c',
-    });
-   res.send('ok');
-});
-
 
 
 app.listen(3000, 'localhost', () => {
