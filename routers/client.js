@@ -22,7 +22,8 @@ clientRouter
         res.send('It works!');
     })
     .delete('/:id', (req, res) => {
-        res.send('It works!');
+        db.delete(req.params.id);
+        res.render('client/deleted');
     })
 ;
 
