@@ -12,12 +12,17 @@ class Db {
         this._data = JSON.parse(await readFile(this.dbFileName, 'utf8'));
     }
 
+    _save() {
+        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+    }
+
+
     create(obj) {
         this._data.push({
             id: uuid(),
             ...obj,
         });
-        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+        this._save();
     }
 
     getAll() {
@@ -35,11 +40,12 @@ class Db {
                 return oneObj;
             }
         });
-        writeFile(this.dbFileName, JSON.stringify(this._data), 'utf8');
+        this._save();
     }
 
     delete(id) {
-this._data = this._data.filter(oneObj => oneObj.id !== id); //nowa tablica będzie miała elementy true
+        this._data = this._data.filter(oneObj => oneObj.id !== id); //nowa tablica będzie miała elementy true
+        this._save();
     }
 
 }
