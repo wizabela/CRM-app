@@ -1,0 +1,26 @@
+{
+  "name": "crm-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "notes.js",
+  "scripts": {
+    "start": "npx nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wizabela/CRM-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wizabela/CRM-app/issues"
+  },
+  "homepage": "https://github.com/wizabela/CRM-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "method-override": "^3.0.0",
+    "uuid": "^8.3.2"
+  }
+}
