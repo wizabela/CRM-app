@@ -16,14 +16,30 @@ clientRouter
         });
     })
     .post('/', (req, res) => {
-        res.send('It works!');
+        const id = db.create(req.body); //przypisz do id to co daje create w return
+        res.render('client/added', {
+            name: req.body.name,
+            id, //i przekaż to id dalej w renderowaniu
+        });
     })
     .put('/:id', (req, res) => {
-        res.send('It works!');
+        db.update(req.params.id, req.body);
+        res.render('client/modified', {
+            name: req.body.name,
+            id: req.params.id,
+        });
     })
     .delete('/:id', (req, res) => {
         db.delete(req.params.id);
         res.render('client/deleted');
+    })
+    .get('/form/add', (req, res) => {
+        res.render('client/forms/add');
+    })
+    .get('/form/edit/:id', (req, res) => {
+        res.render('client/forms/edit', {
+            client: db.getOne(req.params.id),
+        });
     })
 ;
 
