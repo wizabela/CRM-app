@@ -10,8 +10,7 @@ tr:nth-child(2n) {
     background: #e7e5e5;
 }
 
-thead tr {
-    margin: 2px;
+thead tr, .header-of-left th {
     background: #8f8e8e;
 }
 
