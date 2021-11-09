@@ -12,11 +12,8 @@ clientRouter
         });
     })
     .get('/:id', (req, res) => {
-        const client = new ClientRecord(db.getOne(req.params.id));
-        console.log(client);
-
         res.render('client/one', {
-            client,
+            client: db.getOne(req.params.id),
         });
     })
     .post('/', (req, res) => {

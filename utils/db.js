@@ -1,7 +1,7 @@
 const {readFile, writeFile} = require('fs').promises;
 const {join} = require('path');
 const {v4: uuid} = require('uuid');
-const {Client} = require('../records/client-record');
+const {ClientRecord} = require('../records/client-record');
 
 class Db {
     constructor(dbFileName) {
@@ -10,7 +10,8 @@ class Db {
     }
 
     async _load() {
-        this._data = JSON.parse(await readFile(this.dbFileName, 'utf8'));
+        this._data = JSON.parse(await readFile(this.dbFileName, 'utf8')).map(obj => new ClientRecord(obj));//json zamieniamy każdy pojedynczy objekt od razu na obiekt typu klasa ClientRecord
+        console.log(this._data);
     }
 
     _save() {
