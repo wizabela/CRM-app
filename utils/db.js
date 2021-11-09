@@ -1,6 +1,7 @@
 const {readFile, writeFile} = require('fs').promises;
 const {join} = require('path');
 const {v4: uuid} = require('uuid');
+const {Client} = require('../records/client-record');
 
 class Db {
     constructor(dbFileName) {
@@ -59,6 +60,8 @@ class Db {
 }
 
 const db = new Db('client.json');
+
+
 
 module.exports = {
     db,
