@@ -1,6 +1,7 @@
 function handleError(err, req, res, next) {
-    console.log(err.message);
-res.render('error');
+res.render('error', {
+    message: err.message,
+});
 }
 
 module.exports = {
