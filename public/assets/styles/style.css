@@ -19,3 +19,10 @@ thead tr, .header-of-left th {
 tr, th {
     padding: 6px;
 }
+.error {
+    background: #f8b9b9;
+    border: 2px solid red;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+}
