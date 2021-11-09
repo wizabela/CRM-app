@@ -1,17 +1,33 @@
 class ClientRecord { //pojedynczy obiekt jest w klasie
     constructor(obj) {
-        const {name} = obj;
-        if (!name || typeof name === 'string' || name.length > 2) {
-            // console.log(name, !name, typeof name === 'string', name.length > 2);->zwraca: Tester2 false true true
+        const {id, name, mail, nextContactAt, notes} = obj;
+
+        if (!id || typeof id !== 'string') {
+            throw new Error('ID musi być niepustym tekstem.');
+        }
+
+        if (!name || typeof name !== 'string' || name.length < 3) {
             throw new Error('Imię musi być tekstem o długości min. 3 znaków.');
         }
 
+        if (!mail || typeof mail !== 'string' || mail.indexOf('@') === -1) {
+            throw new Error('Email nieprawidłowy.');
+        }
 
-        this.id = obj.id;
-        this.name = obj.name;
-        this.mail = obj.mail;
-        this.nextContactAt = obj.nextContactAt;
-        this.notes = obj.notes;
+        if (typeof nextContactAt !== 'string') {
+            throw new Error('Data następnego kontaktu musi być tekstem');
+        }
+
+        if (typeof notes !== 'string') {
+            throw new Error('Notatki muszą być tekstem');
+        }
+
+
+        this.id = id;
+        this.name = name;
+        this.mail = mail;
+        this.nextContactAt = nextContactAt;
+        this.notes = notes;
     }
 }
 

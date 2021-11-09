@@ -19,7 +19,7 @@ class Db {
 
 
     create(obj) {
-        const id = uuid();
+        const id = uuid(); //generujemy id
 
         this._data.push(new ClientRecord({
             id,
