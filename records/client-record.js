@@ -1,25 +1,27 @@
+const {ValidationError} = require("../utils/errors");
+
 class ClientRecord { //pojedynczy obiekt jest w klasie
     constructor(obj) {
         const {id, name, mail, nextContactAt, notes} = obj;
 
         if (!id || typeof id !== 'string') {
-            throw new Error('ID musi być niepustym tekstem.');
+            throw new ValidationError('ID musi być niepustym tekstem.');
         }
 
         if (!name || typeof name !== 'string' || name.length < 3) {
-            throw new Error('Imię musi być tekstem o długości min. 3 znaków.');
+            throw new ValidationError('Imię musi być tekstem o długości min. 3 znaków.');
         }
 
         if (!mail || typeof mail !== 'string' || mail.indexOf('@') === -1) {
-            throw new Error('Email nieprawidłowy.');
+            throw new ValidationError('Email nieprawidłowy.');
         }
 
         if (typeof nextContactAt !== 'string') {
-            throw new Error('Data następnego kontaktu musi być tekstem');
+            throw new ValidationError('Data następnego kontaktu musi być tekstem');
         }
 
         if (typeof notes !== 'string') {
-            throw new Error('Notatki muszą być tekstem');
+            throw new ValidationError('Notatki muszą być tekstem');
         }
 
 
